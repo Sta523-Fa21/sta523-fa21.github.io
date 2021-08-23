@@ -5,6 +5,10 @@
     <link>/categories/</link>
     <description>Recent content in Categories on Programming for Statistical Science</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2021. All rights reserved.</copyright><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2021. All rights reserved.</copyright>
+    
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>
