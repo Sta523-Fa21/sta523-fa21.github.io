@@ -30,7 +30,7 @@ class: middle, center
   
 ## Missing Values
   
-R uses `NA` to represent missing values in its data structures, what may not be obvious is that there are different `NA`s for the different types.
+R uses `NA` to represent missing values in its data structures, what may not be obvious is that there are different `NA`s for different atomic types.
 
 .pull-left[
 
@@ -56,6 +56,14 @@ typeof(NA+1L)
 
 ```
 ## [1] "integer"
+```
+
+```r
+typeof(c(NA,""))
+```
+
+```
+## [1] "character"
 ```
 ]
 
@@ -85,6 +93,14 @@ typeof(NA_integer_)
 
 ```
 ## [1] "integer"
+```
+
+```r
+typeof(NA_complex_)
+```
+
+```
+## [1] "complex"
 ```
 ]
 
@@ -124,14 +140,6 @@ NA * 5
 .pull-right[
 
 ```r
-mean(c(1, 2, 3, NA))
-```
-
-```
-## [1] NA
-```
-
-```r
 sqrt(NA)
 ```
 
@@ -146,13 +154,47 @@ sqrt(NA)
 ```
 ## [1] NA
 ```
+
+```r
+sum(c(1, 2, 3, NA))
+```
+
+```
+## [1] NA
+```
 ]
+
+--
+
+&lt;br/&gt;
+
+Summarizing functions (e.g. `sum()`, `mean()`, `sd()`, etc.) will often have a `na.rm` argument which will allow you to *drop* missing values.
+
+
+```r
+sum(c(1, 2, 3, NA), na.rm = TRUE)
+```
+
+```
+## [1] 6
+```
+
+```r
+mean(c(1, 2, 3, NA), na.rm = TRUE)
+```
+
+```
+## [1] 2
+```
+
 
 ---
   
 ## NAs are not always sticky 
   
 A useful mental model for `NA`s is to consider them as a unknown value that could take any of the possible values for that type. 
+
+--
 
 For numbers or characters this isn't very helpful, but for a logical value we know that the value must either be `TRUE` or `FALSE` and we can use that when deciding what value to return.
 
@@ -383,38 +425,22 @@ NaN * NA
 
 ---
 
-## Testing for `inf` and `NaN`
+## Testing for `Inf` and `NaN`
 
 `NaN` and `Inf` don't have the same testing issues that `NA`s do, but there are still convenience functions for testing for these types of values
 
 .pull-left[
 
 ```r
-NA
+is.finite(Inf)
 ```
 
 ```
-## [1] NA
-```
-
-```r
-1/0+1/0
-```
-
-```
-## [1] Inf
+## [1] FALSE
 ```
 
 ```r
-1/0-1/0
-```
-
-```
-## [1] NaN
-```
-
-```r
-1/0 == Inf
+is.infinite(-Inf)
 ```
 
 ```
@@ -422,7 +448,15 @@ NA
 ```
 
 ```r
--1/0 == Inf
+is.nan(Inf)
+```
+
+```
+## [1] FALSE
+```
+
+```r
+is.nan(-Inf)
 ```
 
 ```
@@ -436,6 +470,14 @@ Inf &gt; 1
 ```
 ## [1] TRUE
 ```
+
+```r
+-Inf &gt; 1
+```
+
+```
+## [1] FALSE
+```
 ]
 
 --
@@ -443,7 +485,7 @@ Inf &gt; 1
 .pull-right[
 
 ```r
-is.finite(1/0+1/0)
+is.finite(NaN)
 ```
 
 ```
@@ -451,7 +493,7 @@ is.finite(1/0+1/0)
 ```
 
 ```r
-is.finite(1/0-1/0)
+is.infinite(NaN)
 ```
 
 ```
@@ -459,7 +501,7 @@ is.finite(1/0-1/0)
 ```
 
 ```r
-is.nan(1/0-1/0)
+is.nan(NaN)
 ```
 
 ```
@@ -468,6 +510,14 @@ is.nan(1/0-1/0)
 
 ```r
 is.finite(NA)
+```
+
+```
+## [1] FALSE
+```
+
+```r
+is.infinite(NA)
 ```
 
 ```
@@ -579,17 +629,84 @@ count: false
 
 ## Function Parts
 
-Functions are defined by two components: the arguments (`formals`) and the code (`body`). Functions are assigned names like any other object in R (using `=` or `&lt;-`)
+Functions are defined by two components: the arguments (`formals`) and the code (`body`). 
+
+Functions are assigned names like any other object in R (using `=` or `&lt;-`)
 
 
 ```r
-gcd = function(x1, y1, x2, y2) {
+gcd = function(x1, y1, x2 = 0, y2 = 0) {
   R = 6371 # Earth mean radius in km
   
   # distance in km
   acos(sin(y1)*sin(y2) + cos(y1)*cos(y2) * cos(x2-x1)) * R
 }
 ```
+
+--
+
+.pull-left[
+
+```r
+typeof(gcd)
+```
+
+```
+## [1] "closure"
+```
+]
+
+.pull-right[
+
+```r
+mode(gcd)
+```
+
+```
+## [1] "function"
+```
+]
+
+--
+
+&lt;div&gt;
+.pull-left[
+
+```r
+formals(gcd)
+```
+
+```
+## $x1
+## 
+## 
+## $y1
+## 
+## 
+## $x2
+## [1] 0
+## 
+## $y2
+## [1] 0
+```
+]
+
+.pull-right[
+
+```r
+body(gcd)
+```
+
+```
+## {
+##     R = 6371
+##     acos(sin(y1) * sin(y2) + cos(y1) * cos(y2) * cos(x2 - x1)) * 
+##         R
+## }
+```
+]
+&lt;/div&gt;
+
 
 ---
 
@@ -604,9 +721,9 @@ There are two approaches to returning values from functions in R - explicit and 
 
 ```r
 f = function(x) {
-  x + 1
   return(x * x)
 }
+
 f(2)
 ```
 
@@ -616,20 +733,75 @@ f(2)
 
 --
 
+&lt;br/&gt;
+
 **Implicit** - return value of the last expression is returned.
 
 
 ```r
 g = function(x) {
-  x + 1
   x * x
 }
+
 g(3)
 ```
 
 ```
 ## [1] 9
 ```
+
+---
+
+## Invisible returns
+
+Many functions in R make use of an invisible return value
+
+
+```r
+f = function(x) {
+  print(x)
+}
+
+y = f(1)
+```
+
+```
+## [1] 1
+```
+
+```r
+y
+```
+
+```
+## [1] 1
+```
+
+--
+
+
+```r
+g = function(x) {
+  invisible(x)
+}
+```
+
+
+```r
+g(2)
+```
+
+
+```r
+z = g(2)
+z
+```
+
+```
+## [1] 2
+```
+
+
 
 ---
 
@@ -652,6 +824,8 @@ f(1:2)
 
 --
 
+&lt;br/&gt;
+
 
 ```r
 g = function(x) {
@@ -669,12 +843,16 @@ g(1:2)
 ## [1] "hello"
 ```
 
+.footnote[More on generic vectors next Tuesday]
+
 ---
 class: split-50
 
 ## Argument names
 
-When defining a function we are also implicitly defining names for the arguments, when calling the function we can use these names to pass arguments in a alternative order.
+When defining a function we explicitly define names for the arguments, which become variables within the scope of the function.
+
+When calling a function we can use these names to pass arguments in an alternative order.
 
 
 
@@ -683,6 +861,8 @@ f = function(x, y, z) {
   paste0("x=", x, " y=", y, " z=", z)
 }
 ```
+
+--
 
 .pull-left[
 
@@ -702,6 +882,8 @@ f(z=1, x=2, y=3)
 ## [1] "x=2 y=3 z=1"
 ```
 ]
+
+--
 
 .pull-right[
 
@@ -724,8 +906,6 @@ f(y=2, 1, x=3)
 
 --
 
-.pad-top[
-
 
 ```r
 f(1, 2, 3, 4)
@@ -743,7 +923,6 @@ f(1, 2, m=3)
 ## Error in f(1, 2, m = 3): unused argument (m = 3)
 ```
 
-]
 ---
 
 ## Argument defaults
@@ -756,6 +935,8 @@ f = function(x, y=1, z=1) {
   paste0("x=", x, " y=", y, " z=", z)
 }
 ```
+
+--
 
 .pull-left[
 
@@ -775,6 +956,8 @@ f(x=3)
 ## [1] "x=3 y=1 z=1"
 ```
 ]
+
+--
 
 .pull-right[
 
@@ -796,6 +979,8 @@ f(y=2, 2)
 ]
 
 --
+
+&lt;br/&gt;
 
 
 ```r
@@ -1050,7 +1235,7 @@ lm
 ##         z$qr &lt;- NULL
 ##     z
 ## }
-## &lt;bytecode: 0x55b40dd0e880&gt;
+## &lt;bytecode: 0x560a7e85e7b0&gt;
 ## &lt;environment: namespace:stats&gt;
 ```
 
