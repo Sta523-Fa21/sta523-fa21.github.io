@@ -110,7 +110,7 @@ str( list("A", c(TRUE,FALSE), (1:4)/2, list(TRUE, 1), function(x) x^2) )
 ##   ..$ : num 1
 ##  $ :function (x)  
 ##   ..- attr(*, "srcref")= 'srcref' int [1:8] 1 55 1 69 55 69 1 1
-##   .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x55ddc01057b0&gt;
+##   .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x55c6c0d947c8&gt;
 ```
 
 
@@ -949,7 +949,7 @@ print
 ```
 ## function (x, ...) 
 ## UseMethod("print")
-## &lt;bytecode: 0x55ddbf9e0d98&gt;
+## &lt;bytecode: 0x55c6c06654d8&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -966,7 +966,7 @@ mean
 ```
 ## function (x, ...) 
 ## UseMethod("mean")
-## &lt;bytecode: 0x55ddbff1f020&gt;
+## &lt;bytecode: 0x55c6c0bb0038&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -977,7 +977,7 @@ t.test
 ```
 ## function (x, ...) 
 ## UseMethod("t.test")
-## &lt;bytecode: 0x55ddbe72c520&gt;
+## &lt;bytecode: 0x55c6bf3a6520&gt;
 ## &lt;environment: namespace:stats&gt;
 ```
 ]
@@ -991,7 +991,7 @@ summary
 ```
 ## function (object, ...) 
 ## UseMethod("summary")
-## &lt;bytecode: 0x55ddbe7219d0&gt;
+## &lt;bytecode: 0x55c6bf135bb0&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -1002,7 +1002,7 @@ plot
 ```
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x55ddbe5c0b70&gt;
+## &lt;bytecode: 0x55c6be9dd4f0&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 ]
@@ -1180,106 +1180,111 @@ methods("print")
 ## [106] print.htest*                                        
 ## [107] print.html*                                         
 ## [108] print.html_dependency*                              
-## [109] print.infl*                                         
-## [110] print.integrate*                                    
-## [111] print.isoreg*                                       
-## [112] print.kmeans*                                       
-## [113] print.knitr_kable*                                  
-## [114] print.Latex*                                        
-## [115] print.LaTeX*                                        
-## [116] print.libraryIQR                                    
-## [117] print.listof                                        
-## [118] print.lm*                                           
-## [119] print.loadings*                                     
-## [120] print.loess*                                        
-## [121] print.logLik*                                       
-## [122] print.ls_str*                                       
-## [123] print.medpolish*                                    
-## [124] print.MethodsFunction*                              
-## [125] print.mtable*                                       
-## [126] print.NativeRoutineList                             
-## [127] print.news_db*                                      
-## [128] print.nls*                                          
-## [129] print.noquote                                       
-## [130] print.numeric_version                               
-## [131] print.object_size*                                  
-## [132] print.octmode                                       
-## [133] print.packageDescription*                           
-## [134] print.packageInfo                                   
-## [135] print.packageIQR*                                   
-## [136] print.packageStatus*                                
-## [137] print.pairwise.htest*                               
-## [138] print.person*                                       
-## [139] print.POSIXct                                       
-## [140] print.POSIXlt                                       
-## [141] print.power.htest*                                  
-## [142] print.ppr*                                          
-## [143] print.prcomp*                                       
-## [144] print.princomp*                                     
-## [145] print.proc_time                                     
-## [146] print.quosure*                                      
-## [147] print.quosures*                                     
-## [148] print.raster*                                       
-## [149] print.Rd*                                           
-## [150] print.recordedplot*                                 
-## [151] print.restart                                       
-## [152] print.RGBcolorConverter*                            
-## [153] print.rlang_box_done*                               
-## [154] print.rlang_box_splice*                             
-## [155] print.rlang_data_pronoun*                           
-## [156] print.rlang_envs*                                   
-## [157] print.rlang_error*                                  
-## [158] print.rlang_fake_data_pronoun*                      
-## [159] print.rlang_lambda_function*                        
-## [160] print.rlang_trace*                                  
-## [161] print.rlang_zap*                                    
-## [162] print.rle                                           
-## [163] print.roman*                                        
-## [164] print.sessionInfo*                                  
-## [165] print.shiny.tag*                                    
-## [166] print.shiny.tag.list*                               
-## [167] print.simple.list                                   
-## [168] print.smooth.spline*                                
-## [169] print.socket*                                       
-## [170] print.srcfile                                       
-## [171] print.srcref                                        
-## [172] print.stepfun*                                      
-## [173] print.stl*                                          
-## [174] print.StructTS*                                     
-## [175] print.subdir_tests*                                 
-## [176] print.summarize_CRAN_check_status*                  
-## [177] print.summary.aov*                                  
-## [178] print.summary.aovlist*                              
-## [179] print.summary.ecdf*                                 
-## [180] print.summary.glm*                                  
-## [181] print.summary.lm*                                   
-## [182] print.summary.loess*                                
-## [183] print.summary.manova*                               
-## [184] print.summary.nls*                                  
-## [185] print.summary.packageStatus*                        
-## [186] print.summary.ppr*                                  
-## [187] print.summary.prcomp*                               
-## [188] print.summary.princomp*                             
-## [189] print.summary.table                                 
-## [190] print.summary.warnings                              
-## [191] print.summaryDefault                                
-## [192] print.table                                         
-## [193] print.tables_aov*                                   
-## [194] print.terms*                                        
-## [195] print.ts*                                           
-## [196] print.tskernel*                                     
-## [197] print.TukeyHSD*                                     
-## [198] print.tukeyline*                                    
-## [199] print.tukeysmooth*                                  
-## [200] print.undoc*                                        
-## [201] print.vignette*                                     
-## [202] print.warnings                                      
-## [203] print.xfun_raw_string*                              
-## [204] print.xfun_rename_seq*                              
-## [205] print.xfun_strict_list*                             
-## [206] print.xgettext*                                     
-## [207] print.xngettext*                                    
-## [208] print.xtabs*                                        
+## [109] print.htmltools.selector*                           
+## [110] print.htmltools.selector.list*                      
+## [111] print.infl*                                         
+## [112] print.integrate*                                    
+## [113] print.isoreg*                                       
+## [114] print.key_missing*                                  
+## [115] print.kmeans*                                       
+## [116] print.knitr_kable*                                  
+## [117] print.Latex*                                        
+## [118] print.LaTeX*                                        
+## [119] print.libraryIQR                                    
+## [120] print.listof                                        
+## [121] print.lm*                                           
+## [122] print.loadings*                                     
+## [123] print.loess*                                        
+## [124] print.logLik*                                       
+## [125] print.ls_str*                                       
+## [126] print.medpolish*                                    
+## [127] print.MethodsFunction*                              
+## [128] print.mtable*                                       
+## [129] print.NativeRoutineList                             
+## [130] print.news_db*                                      
+## [131] print.nls*                                          
+## [132] print.noquote                                       
+## [133] print.numeric_version                               
+## [134] print.object_size*                                  
+## [135] print.octmode                                       
+## [136] print.packageDescription*                           
+## [137] print.packageInfo                                   
+## [138] print.packageIQR*                                   
+## [139] print.packageStatus*                                
+## [140] print.pairwise.htest*                               
+## [141] print.person*                                       
+## [142] print.POSIXct                                       
+## [143] print.POSIXlt                                       
+## [144] print.power.htest*                                  
+## [145] print.ppr*                                          
+## [146] print.prcomp*                                       
+## [147] print.princomp*                                     
+## [148] print.proc_time                                     
+## [149] print.quosure*                                      
+## [150] print.quosures*                                     
+## [151] print.raster*                                       
+## [152] print.Rd*                                           
+## [153] print.recordedplot*                                 
+## [154] print.restart                                       
+## [155] print.RGBcolorConverter*                            
+## [156] print.rlang_box_done*                               
+## [157] print.rlang_box_splice*                             
+## [158] print.rlang_data_pronoun*                           
+## [159] print.rlang_envs*                                   
+## [160] print.rlang_error*                                  
+## [161] print.rlang_fake_data_pronoun*                      
+## [162] print.rlang_lambda_function*                        
+## [163] print.rlang_trace*                                  
+## [164] print.rlang_zap*                                    
+## [165] print.rle                                           
+## [166] print.roman*                                        
+## [167] print.sessionInfo*                                  
+## [168] print.shiny.tag*                                    
+## [169] print.shiny.tag.env*                                
+## [170] print.shiny.tag.list*                               
+## [171] print.shiny.tag.query*                              
+## [172] print.simple.list                                   
+## [173] print.smooth.spline*                                
+## [174] print.socket*                                       
+## [175] print.srcfile                                       
+## [176] print.srcref                                        
+## [177] print.stepfun*                                      
+## [178] print.stl*                                          
+## [179] print.StructTS*                                     
+## [180] print.subdir_tests*                                 
+## [181] print.summarize_CRAN_check_status*                  
+## [182] print.summary.aov*                                  
+## [183] print.summary.aovlist*                              
+## [184] print.summary.ecdf*                                 
+## [185] print.summary.glm*                                  
+## [186] print.summary.lm*                                   
+## [187] print.summary.loess*                                
+## [188] print.summary.manova*                               
+## [189] print.summary.nls*                                  
+## [190] print.summary.packageStatus*                        
+## [191] print.summary.ppr*                                  
+## [192] print.summary.prcomp*                               
+## [193] print.summary.princomp*                             
+## [194] print.summary.table                                 
+## [195] print.summary.warnings                              
+## [196] print.summaryDefault                                
+## [197] print.table                                         
+## [198] print.tables_aov*                                   
+## [199] print.terms*                                        
+## [200] print.ts*                                           
+## [201] print.tskernel*                                     
+## [202] print.TukeyHSD*                                     
+## [203] print.tukeyline*                                    
+## [204] print.tukeysmooth*                                  
+## [205] print.undoc*                                        
+## [206] print.vignette*                                     
+## [207] print.warnings                                      
+## [208] print.xfun_raw_string*                              
+## [209] print.xfun_rename_seq*                              
+## [210] print.xfun_strict_list*                             
+## [211] print.xgettext*                                     
+## [212] print.xngettext*                                    
+## [213] print.xtabs*                                        
 ## see '?methods' for accessing help and source code
 ```
 ]
@@ -1338,7 +1343,7 @@ print.factor
 ##         warning(val)
 ##     invisible(x)
 ## }
-## &lt;bytecode: 0x55ddbf860530&gt;
+## &lt;bytecode: 0x55c6c067f1a0&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 ---
@@ -1374,7 +1379,7 @@ print.default
 ##         missing(useSource))
 ##     .Internal(print.default(x, args, missings))
 ## }
-## &lt;bytecode: 0x55ddbf8650e8&gt;
+## &lt;bytecode: 0x55c6c0569148&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -1544,7 +1549,7 @@ shuffle( 1:10 )
 ```
 
 ```
-##  [1]  3  9  4  2  8 10  1  5  6  7
+##  [1]  9  3  6  8 10  4  7  1  2  5
 ```
 
 ```r
@@ -1552,8 +1557,8 @@ shuffle( factor(c("A","B","C","A")) )
 ```
 
 ```
-## [1] B C A A
-## Levels: B C A
+## [1] C B A A
+## Levels: C B A
 ```
 ]
 
