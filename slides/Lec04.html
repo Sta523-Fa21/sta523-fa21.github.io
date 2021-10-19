@@ -110,7 +110,7 @@ str( list("A", c(TRUE,FALSE), (1:4)/2, list(TRUE, 1), function(x) x^2) )
 ##   ..$ : num 1
 ##  $ :function (x)  
 ##   ..- attr(*, "srcref")= 'srcref' int [1:8] 1 55 1 69 55 69 1 1
-##   .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x562bed5688d0&gt;
+##   .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x55aedc5408d0&gt;
 ```
 
 
@@ -949,7 +949,7 @@ print
 ```
 ## function (x, ...) 
 ## UseMethod("print")
-## &lt;bytecode: 0x562beca84b00&gt;
+## &lt;bytecode: 0x55aedba5cb00&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -966,7 +966,7 @@ mean
 ```
 ## function (x, ...) 
 ## UseMethod("mean")
-## &lt;bytecode: 0x562becff1050&gt;
+## &lt;bytecode: 0x55aedbfc9050&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -977,7 +977,7 @@ t.test
 ```
 ## function (x, ...) 
 ## UseMethod("t.test")
-## &lt;bytecode: 0x562beb17d540&gt;
+## &lt;bytecode: 0x55aeda155540&gt;
 ## &lt;environment: namespace:stats&gt;
 ```
 ]
@@ -991,7 +991,7 @@ summary
 ```
 ## function (object, ...) 
 ## UseMethod("summary")
-## &lt;bytecode: 0x562bebdc14c8&gt;
+## &lt;bytecode: 0x55aedad994c8&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -1002,7 +1002,7 @@ plot
 ```
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x562beb4e7e28&gt;
+## &lt;bytecode: 0x55aeda4bfe28&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 ]
@@ -1343,7 +1343,7 @@ print.factor
 ##         warning(val)
 ##     invisible(x)
 ## }
-## &lt;bytecode: 0x562becf86dc0&gt;
+## &lt;bytecode: 0x55aedbf5edc0&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 ---
@@ -1379,7 +1379,7 @@ print.default
 ##         missing(useSource))
 ##     .Internal(print.default(x, args, missings))
 ## }
-## &lt;bytecode: 0x562becdf4bf8&gt;
+## &lt;bytecode: 0x55aedbdccbf8&gt;
 ## &lt;environment: namespace:base&gt;
 ```
 
@@ -1549,7 +1549,7 @@ shuffle( 1:10 )
 ```
 
 ```
-##  [1]  9  3  1  4  6  2  5  7  8 10
+##  [1]  7  4 10  9  8  5  1  3  6  2
 ```
 
 ```r
@@ -1557,7 +1557,7 @@ shuffle( factor(c("A","B","C","A")) )
 ```
 
 ```
-## [1] B A A C
+## [1] A A C B
 ## Levels: A C B
 ```
 ]
