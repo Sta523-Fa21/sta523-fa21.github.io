@@ -105,10 +105,10 @@ d = tibble(
 ## # A tibble: 4 × 6
 ##   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 ##   &lt;bch:expr&gt;            &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-## 1 d[d$x &gt; 0.5, ]        151.11µs 176.46µs     4828.  251.94KB    12.8 
-## 2 d[which(d$x &gt; 0.5), ] 193.01µs 219.91µs     4287.  268.16KB    20.5 
-## 3 subset(d, x &gt; 0.5)    306.31µs 324.21µs     2887.  285.67KB    14.9 
-## 4 filter(d, x &gt; 0.5)      1.98ms   2.21ms      442.    1.54MB     6.23
+## 1 d[d$x &gt; 0.5, ]         128.8µs  136.7µs     6573.  252.66KB    17.2 
+## 2 d[which(d$x &gt; 0.5), ]  178.2µs  186.5µs     5303.  269.45KB    25.4 
+## 3 subset(d, x &gt; 0.5)     258.5µs  270.3µs     3671.  286.39KB    19.6 
+## 4 filter(d, x &gt; 0.5)      1.68ms   1.74ms      575.    1.54MB     8.39
 ```
 
 ---
@@ -124,10 +124,10 @@ summary(b, relative=TRUE)
 ## # A tibble: 4 × 6
 ##   expression              min median `itr/sec` mem_alloc `gc/sec`
 ##   &lt;bch:expr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-## 1 d[d$x &gt; 0.5, ]         1      1        10.9       1        2.05
-## 2 d[which(d$x &gt; 0.5), ]  1.28   1.25      9.69      1.06     3.30
-## 3 subset(d, x &gt; 0.5)     2.03   1.84      6.53      1.13     2.40
-## 4 filter(d, x &gt; 0.5)    13.1   12.5       1         6.27     1
+## 1 d[d$x &gt; 0.5, ]         1      1        11.4       1        2.05
+## 2 d[which(d$x &gt; 0.5), ]  1.38   1.36      9.23      1.07     3.03
+## 3 subset(d, x &gt; 0.5)     2.01   1.98      6.39      1.13     2.33
+## 4 filter(d, x &gt; 0.5)    13.0   12.7       1         6.25     1
 ```
 
 ---
@@ -329,7 +329,7 @@ str(m)
 
 ```
 ## List of 2
-##  $ pid: int 10664
+##  $ pid: int 10668
 ##  $ fd : int [1:2] 4 7
 ##  - attr(*, "class")= chr [1:3] "parallelJob" "childProcess" "process"
 ```
@@ -340,7 +340,7 @@ str(n)
 
 ```
 ## List of 2
-##  $ pid: int 10665
+##  $ pid: int 10669
 ##  $ fd : int [1:2] 5 9
 ##  - attr(*, "class")= chr [1:3] "parallelJob" "childProcess" "process"
 ```
@@ -359,9 +359,9 @@ str(mccollect(list(m,n,o)))
 
 ```
 ## List of 3
-##  $ 10664: num [1:1000000] -0.349 -0.115 -0.288 0.73 -0.121 ...
-##  $ 10665: num [1:1000000] 0.653 0.175 0.799 0.305 0.935 ...
-##  $ 10666: num [1:1000000] 0.565 0.102 0.814 1.854 1.204 ...
+##  $ 10668: num [1:1000000] -0.162 -0.893 0.107 -0.578 1.056 ...
+##  $ 10669: num [1:1000000] 0.127 0.345 0.75 0.54 0.598 ...
+##  $ 10670: num [1:1000000] 0.419 0.874 3.79 0.63 2.891 ...
 ```
 
 ---
@@ -375,8 +375,8 @@ mccollect(p, wait = FALSE, 10) # will retrieve the result (since it's fast)
 ```
 
 ```
-## $`10667`
-## [1] 0.001592146
+## $`10671`
+## [1] 0.005774412
 ```
 
 ```r
@@ -384,7 +384,7 @@ mccollect(p, wait = FALSE)     # will signal the job as terminating
 ```
 
 ```
-## Warning in selectChildren(jobs, timeout): cannot wait for child 10667 as it does
+## Warning in selectChildren(jobs, timeout): cannot wait for child 10671 as it does
 ## not exist
 ```
 
@@ -397,7 +397,7 @@ mccollect(p, wait = FALSE)     # there is no longer such a job
 ```
 
 ```
-## Warning in selectChildren(jobs, timeout): cannot wait for child 10667 as it does
+## Warning in selectChildren(jobs, timeout): cannot wait for child 10671 as it does
 ## not exist
 ```
 
@@ -589,7 +589,7 @@ system.time(foreach(i = 1:10) %dopar% mean(rnorm(1e6)))
 
 ```
 ##    user  system elapsed 
-##   0.596   0.078   0.529
+##   0.475   0.076   0.407
 ```
 
 ```r
@@ -599,7 +599,7 @@ system.time(foreach(i = 1:10) %dopar% mean(rnorm(1e6)))
 
 ```
 ##    user  system elapsed 
-##   0.688   0.120   0.530
+##   0.558   0.098   0.412
 ```
 
 ```r
@@ -609,7 +609,7 @@ system.time(foreach(i = 1:10) %dopar% mean(rnorm(1e6)))
 
 ```
 ##    user  system elapsed 
-##   0.791   0.146   0.528
+##   0.635   0.116   0.423
 ```
 
 ---
